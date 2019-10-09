@@ -66,3 +66,53 @@ pub fn testing_paths(){
     // Relative path
     front_of_house::hosting::add_to_waitlist();
 }
+
+// Define hosting
+use crate::front_of_house::hosting;
+
+pub fn test_use_crate(){
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+}
+
+//// Redefine hosting
+// use self::front_of_house::hosting;
+//
+// pub fn test_use_self(){
+//     hosting::add_to_waitlist();
+//     hosting::add_to_waitlist();
+//     hosting::add_to_waitlist();
+// }
+
+// Idiomatic use path
+use crate::front_of_house::hosting::add_to_waitlist;
+
+pub fn eat_at_restaurant() {
+    add_to_waitlist();
+    add_to_waitlist();
+    add_to_waitlist();
+}
+
+// Use specific fn from module
+use std::collections::HashMap;
+
+fn main() {
+    let mut map = HashMap::new();
+    map.insert(1, 2);
+}
+
+//// Use different Result from different modules
+// use std::fmt;
+// use std::io;
+//
+// fn function1() -> fmt::Result {
+//     // --snip--
+// }
+//
+// fn function2() -> io::Result<()> {
+//     // --snip--
+// }
+
+// Use multiple packages
+use std::{cmp::Ordering, io::{self, Write}, collections::*};
